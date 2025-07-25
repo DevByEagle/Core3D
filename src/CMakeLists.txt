@@ -8,6 +8,5 @@ if(CORE3D_USE_OPENGL)
     find_package(OpenGL REQUIRED)
     find_package(glfw3 REQUIRED)
     
-    target_compile_definitions(Core3D PUBLIC CORE3D_USE_OPENGL)
     target_link_libraries(Core3D PRIVATE OpenGL::GL glfw)
 endif()
