@@ -1,0 +1,5 @@
+@PACKAGE_INIT@
+
+# Set internal variables
+set(_CORE3D_CONFIG_DIR "${CMAKE_CURRENT_LIST_DIR}")
+set(_CORE3D_TARGETS_FILE "${_CORE3D_CONFIG_DIR}/Core3DTargets.cmake")

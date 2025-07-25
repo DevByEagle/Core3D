@@ -5,7 +5,7 @@ include(CMakePackageConfigHelpers)
 set(CORE3D_INSTALL_CMAKEDIR "${CMAKE_INSTALL_LIBDIR}/cmake/Core3D")
 
 install(DIRECTORY "${PROJECT_SOURCE_DIR}/include/Core3D"
-        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}/Core3D
         FILES_MATCHING PATTERN "*.h"
 )
 
@@ -30,7 +30,7 @@ write_basic_package_version_file(
 )
 
 configure_package_config_file(
-    "${PROJECT_SOURCE_DIR}/Core3D.in"
+    "${PROJECT_SOURCE_DIR}/cmake/Core3DConfig.cmake.in"
     "${CMAKE_CURRENT_BINARY_DIR}/Core3DConfig.cmake"
     INSTALL_DESTINATION ${CORE3D_INSTALL_CMAKEDIR}
 )
