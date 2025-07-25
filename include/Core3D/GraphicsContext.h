@@ -11,7 +11,7 @@ namespace Core3D
         ~GraphicsContext();
 
         void Present();
-        inline GraphicsBackend GetCurrentBackend() const;
+        GraphicsBackend GetCurrentBackend() const;
     private:
         GraphicsBackend m_CurrentBackend;
     };

@@ -17,9 +17,9 @@ namespace Core3D
     {
     }
 
-    GraphicsBackend GraphicsContext::GetCurrentBackend() const 
-    { 
-        return m_CurrentBackend; 
+    GraphicsBackend GraphicsContext::GetCurrentBackend() const
+    {
+        return m_CurrentBackend;
     }
 
     bool IsBackendSupported(GraphicsBackend backend)
@@ -30,7 +30,7 @@ namespace Core3D
                 // Check for DirectX support (platform-specific)
                 return false; // Placeholder, implement actual check
             case GraphicsBackend::OpenGL:
-                return true;
+                return GLBackend::IsSupported();
             case GraphicsBackend::Metal:
                 // Check for Metal support (macOS/iOS)
                 return false; // Placeholder, implement actual check

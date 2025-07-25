@@ -1,11 +1,16 @@
-#include <Core3D/Core3D.h>
 #include <iostream>
-
-using Core3D::GraphicsBackend;
+#include <Core3D/Core3D.h>
 
 int main() {
-    std::cout << "Is OpenGL Supported? "
-              << (Core3D::IsBackendSupported(GraphicsBackend::OpenGL) ? "Yes" : "No")
-              << std::endl;
+    Core3D::GraphicsContext graphicsContext;
+
+    if (Core3D::IsBackendSupported(graphicsContext.GetCurrentBackend())) {
+        std::cout << "OpenGL backend is supported." << std::endl;
+    } else {
+        std::cout << "OpenGL backend is not supported." << std::endl;
+    }
+
+    graphicsContext.Present();
+
     return 0;
 }
