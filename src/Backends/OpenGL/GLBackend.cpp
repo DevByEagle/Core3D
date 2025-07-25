@@ -1,8 +1,10 @@
 #include "GLBackend.h"
 
+#include <GLFW/glfw3.h>
+
 bool GLBackend::IsSupported()
 {
-#if defined(CORE3D_USE_OPENGL)
+#if defined(CORE3D_BACKEND_OPENGL)
     return true;
 #else
     return false; // OpenGL is not supported if the macro is not defined

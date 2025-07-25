@@ -1,0 +1,15 @@
+include(GNUInstallDirs)
+# include(CMakePackageConfigHelpers)
+
+install(DIRECTORY "${PROJECT_SOURCE_DIR}/include/Core3D"
+        DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}
+        FILES_MATCHING PATTERN "*.h"
+)
+
+install(
+    TARGETS Core3D EXPORT Core3DTargets
+    RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}       # .exe, .dll
+    LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}       # .so, .dylib
+    ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}       # .lib, .a
+    INCLUDES DESTINATION "${CMAKE_INSTALL_INCLUDEDIR}"
+)
