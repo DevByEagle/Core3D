@@ -17,7 +17,7 @@
 
 ---
 
-### 🐧 Build (Linux/macOS/WS)
+### 🐧 Build (Linux/macOS/WSL)
 
 ```bash
 git clone https://github.com/DevByEagle/Core3D.git
