@@ -1,3 +1,13 @@
-add_executable(BasicDemo BasicDemo.cpp)
+project(examples)
 
-target_link_libraries(BasicDemo PRIVATE Core3D)
+set(EXAMPLES
+    BasicDemo
+)
+
+find_package(Core3D REQUIRED)
+
+foreach(EXAMPLE ${EXAMPLES})
+    add_executable(${EXAMPLE} ${EXAMPLE}/main.cpp)
+    
+    target_link_libraries(${EXAMPLE} Core3D::Core3D)
+endforeach()
