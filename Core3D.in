@@ -1,6 +1,1 @@
 @PACKAGE_INIT@
-
-include("${CMAKE_CURRENT_LIST_DIR}/Core3DTargets.cmake")
-
-# Define Core3D::Core3D as imported target
-set(Core3D_FOUND TRUE)
