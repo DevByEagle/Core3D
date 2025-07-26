@@ -1,8 +1,7 @@
 #include <iostream>
 #include <GL/glew.h>
-#include "GLBackend.h"
-
 #include <GLFW/glfw3.h>
+#include "GLBackend.h"
 
 namespace Core3D
 {
