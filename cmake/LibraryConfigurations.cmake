@@ -1,11 +1,6 @@
 if(CORE3D_USE_OPENGL)
     if(APPLE)
         message(WARNING "OpenGL backend is not supported on macOS. Disabling OpenGL support.")
-
-        list(REMOVE_ITEM CORE3D_SOURCES
-            "${CMAKE_CURRENT_SOURCE_DIR}/Backends/OpenGL/GLBackend.cpp"
-            "${CMAKE_CURRENT_SOURCE_DIR}/Backends/OpenGL/GLBackend.h"
-        )
     elseif(WIN32)
         # GLEW
         add_subdirectory(${CMAKE_SOURCE_DIR}/thirdparty/glew ${CMAKE_BINARY_DIR}/thirdparty/glew)
