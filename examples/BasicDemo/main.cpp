@@ -4,7 +4,10 @@
 int main() {
     Core3D::GraphicsContext graphicsContext;
 
-    std::cout << graphicsContext.GetCurrentBackend();
-
+    while (!graphicsContext.IsRunning())
+    {
+        graphicsContext.Present();
+    }
+    
     return 0;
 }
