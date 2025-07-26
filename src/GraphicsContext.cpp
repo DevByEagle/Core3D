@@ -6,10 +6,12 @@
     #include "Backends/OpenGL/GLBackend.h"
 #endif
 
-namespace Core3D
+using namespace Core3D;
+
+GraphicsContext::GraphicsContext() 
 {
-    GraphicsContext::GraphicsContext()
-    {
-        
-    }
+#if CORE3D_USE_OPENGL
+    m_CurrentBackend = "OpenGL";
+    GLBackend::Initialize();
+#endif
 }
