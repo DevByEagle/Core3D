@@ -1,10 +1,9 @@
 #include <iostream>
-#include "GLBackend.h"
 
 #ifndef __APPLE__
 #include <GL/glew.h>
 #include <GLFW/glfw3.h>
-
+#include "GLBackend.h"
 
 namespace Core3D
 {
