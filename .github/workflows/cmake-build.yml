@@ -47,7 +47,13 @@ jobs:
         shell: bash
 
       - name: Build
-        run: cmake --build build --config Release -- -j$(nproc || sysctl -n hw.ncpu || echo 2)
+        run: |
+          if [[ "$RUNNER_OS" == "Linux" || "$RUNNER_OS" == "macOS" ]]; then
+            cmake --build build --config Release -- -j$(nproc || sysctl -n hw.ncpu || echo 2)
+          else
+            cmake --build build --config Release
+          fi
+        shell: bash
 
       - name: Run tests (if defined)
         run: cmake --build build --config Release
