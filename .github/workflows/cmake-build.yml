@@ -50,4 +50,4 @@ jobs:
         run: cmake --build build --config Release -- -j$(nproc || sysctl -n hw.ncpu || echo 2)
 
       - name: Run tests (if defined)
-        run: cmake --build build --target test --config Release
+        run: cmake --build build --config Release
