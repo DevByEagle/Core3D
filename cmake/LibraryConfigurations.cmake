@@ -1,33 +1,26 @@
 if(CORE3D_USE_OPENGL)
-    # Platform-specific OpenGL linking
-    if (WIN32)
+    # GLEW and OpenGL Linking
+    if(WIN32)
         add_subdirectory(${CMAKE_SOURCE_DIR}/thirdparty/glew ${CMAKE_BINARY_DIR}/thirdparty/glew)
         target_link_libraries(Core3D PRIVATE opengl32 GLEW)
     elseif(APPLE)
         list(REMOVE_ITEM CORE3D_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/Backends/OpenGL/GLBackend.cpp")
         list(REMOVE_ITEM CORE3D_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/Backends/OpenGL/GLBackend.h")
-        MESSAGE(FATAL_ERROR "OpenGL backend is not supported on macOS. Please use Metal instead.")
+        message(FATAL_ERROR "OpenGL backend is not supported on macOS. Please use Metal instead.")
     elseif(UNIX)
         find_package(OpenGL REQUIRED)
         add_subdirectory(${CMAKE_SOURCE_DIR}/thirdparty/glew ${CMAKE_BINARY_DIR}/thirdparty/glew)
         target_link_libraries(Core3D PRIVATE OpenGL::GL GLEW)
     endif()
 
-    target_compile_definitions(Core3D PRIVATE CORE3D_BACKEND_OPENGL)
-endif()
-
-# Glfw integration for window management with OpenGL
-if(CORE3D_USE_OPENGL)
-    # Platform-specific GLFW linking
+    # GLFW Linking
     if(WIN32)
         add_subdirectory(${CMAKE_SOURCE_DIR}/thirdparty/glfw ${CMAKE_BINARY_DIR}/thirdparty/glfw)
         target_link_libraries(Core3D PRIVATE glfw)
-    elseif(APPLE)
-        list(REMOVE_ITEM CORE3D_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/Backends/OpenGL/GLBackend.cpp")
-        list(REMOVE_ITEM CORE3D_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/Backends/OpenGL/GLBackend.h")
-        MESSAGE(FATAL_ERROR "OpenGL backend is not supported on macOS. Please use Metal instead.")
     elseif(UNIX)
         find_package(glfw3 REQUIRED)
         target_link_libraries(Core3D PRIVATE glfw)
     endif()
+
+    target_compile_definitions(Core3D PRIVATE CORE3D_BACKEND_OPENGL)
 endif()
