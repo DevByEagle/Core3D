@@ -9,7 +9,7 @@ namespace Core3D
     {
     public:
         GraphicsContext();
-        ~GraphicsContext() = default;
+        ~GraphicsContext();
 
         void Draw();
         int GetWidth() const;
