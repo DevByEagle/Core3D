@@ -43,3 +43,8 @@ void GraphicsContext::Present()
 #if CORE3D_BACKEND_OPENGL
 #endif
 }
+
+std::string GraphicsContext::GetCurrentBackend() const
+{
+    return m_CurrentBackend;
+}
