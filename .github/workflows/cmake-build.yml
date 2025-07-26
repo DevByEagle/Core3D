@@ -3,10 +3,11 @@ name: CMake Build & Test
 on:
   push:
     branches:
-      - master
+      - main
+      - 'release/**'
   pull_request:
     branches:
-      - master
+      - main
 
 jobs:
   build:
@@ -32,10 +33,16 @@ jobs:
           cmake-version: ${{ matrix.cmake-version }}
 
       - name: Configure CMake
-        run: cmake -B build -S . -DCMAKE_BUILD_TYPE=Release
+        run: |
+          if [[ "$RUNNER_OS" == "macOS" ]]; then
+            cmake -B build -S . -DCMAKE_BUILD_TYPE=Release -DCORE3D_USE_OPENGL=OFF -DCORE3D_USE_METAL=ON
+          else
+            cmake -B build -S . -DCMAKE_BUILD_TYPE=Release -DCORE3D_USE_OPENGL=ON
+          fi
+        shell: bash
 
       - name: Build
-        run: cmake --build build --config Release -- -j$(nproc || echo 2)
+        run: cmake --build build --config Release -- -j$(nproc || sysctl -n hw.ncpu || echo 2)
 
       - name: Run tests (if defined)
         run: cmake --build build --target test --config Release
