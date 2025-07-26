@@ -1,5 +1,6 @@
 #pragma once
 
+#include <string>
 #include "Common.h"
 
 namespace Core3D
@@ -10,8 +11,11 @@ namespace Core3D
         GraphicsContext(GraphicsBackend backend = GraphicsBackend::OpenGL);
         ~GraphicsContext();
 
-        void Present();
         GraphicsBackend GetCurrentBackend() const;
+    public:
+        void SetTitle(const std::string& title);
+        void SetSize(int width, int height);
+        void Present();
     private:
         GraphicsBackend m_CurrentBackend;
     };

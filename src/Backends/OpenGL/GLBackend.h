@@ -1,7 +1,15 @@
 #pragma once
 
-class GLBackend
+namespace Core3D
 {
-public:
-    static bool IsSupported();
-};
+    class GLBackend
+    {
+    public:
+        static void Initialize();
+        static void Shutdown();
+
+        static void SetWindowTitle(const std::string& title);
+        static void SetWindowSize(int width, int height);
+        static void Present();
+    };
+}

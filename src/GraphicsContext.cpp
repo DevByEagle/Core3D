@@ -1,20 +1,27 @@
 #include "Core3D/Core3D.h"
 #include "Core3D/GraphicsContext.h"
 
+// Include the appropriate backend header based on the selected graphics backend
 #include "Backends/OpenGL/GLBackend.h"
 
 namespace Core3D
 {
     GraphicsContext::GraphicsContext(GraphicsBackend backend) : m_CurrentBackend(backend)
     {
+        switch (backend)
+        {
+        case GraphicsBackend::OpenGL:
+            GLBackend::Initialize();
+            break;
+        default:
+            return; // Unsupported backend
+        }
     }
 
     GraphicsContext::~GraphicsContext()
     {
-    };
-
-    void GraphicsContext::Present()
-    {
+        if (m_CurrentBackend == GraphicsBackend::OpenGL)
+            GLBackend::Shutdown();
     }
 
     GraphicsBackend GraphicsContext::GetCurrentBackend() const
@@ -22,20 +29,39 @@ namespace Core3D
         return m_CurrentBackend;
     }
 
-    bool IsBackendSupported(GraphicsBackend backend)
+    void GraphicsContext::SetTitle(const std::string& title)
     {
-        switch (backend)
+        switch (m_CurrentBackend)
         {
-            case GraphicsBackend::DirectX:
-                // Check for DirectX support (platform-specific)
-                return false; // Placeholder, implement actual check
-            case GraphicsBackend::OpenGL:
-                return GLBackend::IsSupported();
-            case GraphicsBackend::Metal:
-                // Check for Metal support (macOS/iOS)
-                return false; // Placeholder, implement actual check
-            default:
-                return false; // Unsupported backend
+        case GraphicsBackend::OpenGL:
+            GLBackend::SetWindowTitle(title);
+            break;
+        default:
+            return; // Unsupported backend
+        }
+    }
+
+    void GraphicsContext::SetSize(int width, int height)
+    {
+        switch (m_CurrentBackend)
+        {
+        case GraphicsBackend::OpenGL:
+            GLBackend::SetWindowSize(width, height);
+            break;
+        default:
+            return; // Unsupported backend
+        }
+    }
+
+    void GraphicsContext::Present()
+    {
+        switch (m_CurrentBackend)
+        {
+        case GraphicsBackend::OpenGL:
+            GLBackend::Present();
+            break;
+        default:
+            return; // Unsupported backend
         }
     }
 }

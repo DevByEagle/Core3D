@@ -1,12 +1,37 @@
+#include <iostream>
+#include <GL/glew.h>
+#include <GLFW/glfw3.h>
 #include "GLBackend.h"
 
-#include <GLFW/glfw3.h>
-
-bool GLBackend::IsSupported()
+namespace Core3D
 {
-#if defined(CORE3D_BACKEND_OPENGL)
-    return true;
-#else
-    return false; // OpenGL is not supported if the macro is not defined
-#endif
+    static GLFWwindow* window = nullptr;
+
+    void GLBackend::Initialize()
+    {
+        if (!glfwInit())
+        {
+            std::cerr << "Failed to initialize GLFW" << std::endl;
+            return;
+        }
+    }
+
+    void GLBackend::Shutdown()
+    {
+
+    }
+
+    void GLBackend::SetWindowTitle(const std::string& title)
+    {
+
+    }
+
+    void GLBackend::SetWindowSize(int width, int height)
+    {
+    }
+
+    void GLBackend::Present()
+    {
+        
+    }
 }
