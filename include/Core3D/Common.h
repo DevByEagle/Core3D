@@ -2,11 +2,9 @@
 
 namespace Core3D
 {
-    enum class GraphicsBackend
+    enum class C3DResult : int32_t
     {
-        Null = 0,
-        DirectX,
-        OpenGL,
-        Metal
+        Success = 0,
+        UnknownError = -13,
     };
 }

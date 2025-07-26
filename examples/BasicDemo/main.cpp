@@ -4,9 +4,7 @@
 int main() {
     Core3D::GraphicsContext graphicsContext;
 
-    graphicsContext.SetTitle("Core3D Basic Demo");
-
-    graphicsContext.Present();
+    std::cout << graphicsContext.GetCurrentBackend();
 
     return 0;
 }

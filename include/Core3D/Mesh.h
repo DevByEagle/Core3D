@@ -8,7 +8,7 @@ namespace Core3D
 {
     struct Triangle 
     {
-        Vec3 vertices[3];
+        // Vec3 vertices[3];
     };
 
     class Mesh
