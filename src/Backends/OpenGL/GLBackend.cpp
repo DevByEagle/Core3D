@@ -1,7 +1,10 @@
 #include <iostream>
 #include <GL/glew.h>
-#include <GLFW/glfw3.h>
 #include "GLBackend.h"
+
+#if defined(CORE3D_BACKEND_OPENGL)
+#include <GLFW/glfw3.h>
+#endif
 
 namespace Core3D
 {
