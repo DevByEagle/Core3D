@@ -73,7 +73,6 @@ namespace Core3D {
         if (window) {
             glfwSwapBuffers(window);
             glfwPollEvents();
-            glfwWindowShouldClose
         }
     }
 
