@@ -7,7 +7,7 @@ target_include_directories(Core3D
                           $<INSTALL_INTERFACE:include>
                           $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include>
                           PRIVATE
-                          ${GLEW_INCLUDE_DIRS}
+                          ${CMAKE_SOURCE_DIR}/thirdparty/glew/include
 )
 
 include(LibraryConfigurations)
