@@ -30,7 +30,7 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           sudo apt-get update
-          sudo apt-get install -y mesa-common-dev libglfw3-dev
+          sudo apt-get install -y mesa-common-dev libglfw3-dev libglu1-mesa-dev
 
       - name: Setup CMake
         uses: jwlawson/actions-setup-cmake@v1
