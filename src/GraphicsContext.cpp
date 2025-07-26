@@ -47,6 +47,7 @@ int GraphicsContext::GetHeight() const
 void GraphicsContext::Present()
 {
 #if CORE3D_BACKEND_OPENGL
+    GLBackend::Present();
 #endif
 }
 
