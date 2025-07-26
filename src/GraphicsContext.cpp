@@ -23,6 +23,12 @@ GraphicsContext::~GraphicsContext()
 #endif
 }
 
+bool GraphicsContext::IsRunning() {
+#if CORE3D_BACKEND_OPENGL
+    return GLBackend::ShouldWindowClose();
+#endif
+}
+
 void GraphicsContext::Draw()
 {
     return;

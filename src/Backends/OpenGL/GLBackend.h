@@ -10,6 +10,7 @@ namespace Core3D
 
         static void SetWindowTitle(const std::string& title);
         static void SetWindowSize(int width, int height);
+        static bool ShouldWindowClose();
         static void Present();
     };
 }

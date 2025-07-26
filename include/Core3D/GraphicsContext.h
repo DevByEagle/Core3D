@@ -11,6 +11,7 @@ namespace Core3D
         GraphicsContext();
         ~GraphicsContext();
 
+        bool IsRunning();
         void Draw();
         int GetWidth() const;
         int GetHeight() const;

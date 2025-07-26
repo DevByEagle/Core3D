@@ -64,10 +64,16 @@ namespace Core3D {
         }
     }
 
+    bool GLBackend::ShouldWindowClose()
+    {
+        return glfwWindowShouldClose(window);
+    }
+
     void GLBackend::Present() {
         if (window) {
             glfwSwapBuffers(window);
             glfwPollEvents();
+            glfwWindowShouldClose
         }
     }
 
